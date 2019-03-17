@@ -14,8 +14,11 @@ public class TurtleSoup {
      * @param turtle the turtle context
      * @param sideLength length of each side
      */
-    public static void drawSquare(Turtle turtle, int sideLength) {
-        throw new RuntimeException("implement me!");
+    public static void drawSquare(Turtle turtle, int sideLength) {        
+        for (int i = 0; i < 4; i++) {
+            turtle.forward(sideLength);
+            turtle.turn(90);
+        }
     }
 
     /**
