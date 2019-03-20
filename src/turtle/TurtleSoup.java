@@ -62,10 +62,10 @@ public class TurtleSoup {
      * @param sideLength length of each side
      */
     public static void drawRegularPolygon(Turtle turtle, int sides, int sideLength) {
-        double rotation = 180 - calculateRegularPolygonAngle(sides); 
+        double angle = 180 - calculateRegularPolygonAngle(sides); 
         for(int i = 0; i < sides; i++){
             turtle.forward(sideLength);
-            turtle.turn(rotation);
+            turtle.turn(angle);
         }
     }
 
@@ -90,7 +90,15 @@ public class TurtleSoup {
      */
     public static double calculateHeadingToPoint(double currentHeading, int currentX, int currentY,
                                                  int targetX, int targetY) {
-        throw new RuntimeException("implement me!");
+        int dX = targetX - currentX;
+        int dY = targetY - currentY;
+        double angleFromNorth = Math.toDegrees(Math.atan2(dX, dY));
+        double angle = angleFromNorth - currentHeading;
+        // normalize angle to be positive 
+        if(angle < 0)
+            angle += 360;
+        return angle;
+
     }
 
     /**
